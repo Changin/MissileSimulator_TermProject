@@ -1,14 +1,11 @@
 % 프로그램 isHit.m : 명중 여부 판별 함수. sub function of "missile simulator" Project,
-% update : 2023.05.24, Chang-in Baek
+% 2023.05.24, Chang-in Baek
 % input var:
 %	hit_range		%명중판정 거리
 %	pos_a			%항적행렬a [x,y,z; ...] 
 %	pos_b			%항적행렬b [x,y,z; ...]
 % output var :
 % 	is_hit			%(logical) true : 명중, false : 불명
-% function :
-%
-% parameter :
 
 function is_hit = isHit(hit_range, pos_a, pos_b )
 	is_hit = false; 		%명중여부 논리변수 초기화
