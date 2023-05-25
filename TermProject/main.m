@@ -32,13 +32,14 @@ track_cell = getTrack(time_limit, hit_range, speed_fighter, speed_missile, init_
 % 출력부:
 % 그래프 출력
 %track_cell - 1: 종료시간, 2: 전투기항적, 3: 미사일 항적, 4: 명중여부
-displayPlot(track_cell(1), track_cell(2), track_cell(3), track_cell(4));
+displayPlot(track_cell{1}, track_cell{2}, track_cell{3}, track_cell{4});
 
 
 % 명중여부 콘솔 출력
-is_hit = track_cell(4);
+is_hit = track_cell{4};
 if (is_hit)
 	disp("Target Hit !!");
+	fprintf("Eliminated time : %.2f (sec)\n", track_cell{1}/100)
 else
 	disp("miss!");
 end

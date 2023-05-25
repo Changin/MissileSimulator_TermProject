@@ -37,7 +37,7 @@ function track_cell = getTrack(time_limit, hit_range, speed_fighter, speed_missi
         prev_m_pos = tmp_missile_track(t-1, :); %t-1 에서의 미사일 좌표
         direction = getMissileDirection(prev_f_pos, prev_m_pos);			%미사일 진행방향 단위벡터 계산 함수
 
-        tmp_missile_track(t, : ) = getNextMissilePos(prev_missile_pos, direction, speed_missile);	%미사일 좌표 계산 함수
+        tmp_missile_track(t, : ) = getNextMissilePos(prev_m_pos, direction, speed_missile);	%미사일 좌표 계산 함수
 
         % 명중하거나 or 시간 초과되면 항적 기록 종료
         if (isHit(hit_range, tmp_fighter_track(t,:), tmp_missile_track(t,:)) | t>=time_limit)
@@ -51,6 +51,6 @@ function track_cell = getTrack(time_limit, hit_range, speed_fighter, speed_missi
     track_cell(1) = {t};					%종료시간
     track_cell(2) = {tmp_fighter_track};	%전투기 항적 행렬
     track_cell(3) = {tmp_missile_track};	%미사일 항적 행렬
-    track_cell(4) = {isHit(hit_range, tmp_fighter_track(t,:), tmp_missile_track(t,:))}				%명중 여부
+    track_cell(4) = {isHit(hit_range, tmp_fighter_track(t,:), tmp_missile_track(t,:))};				%명중 여부
 
 end
