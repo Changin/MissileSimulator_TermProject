@@ -3,8 +3,8 @@
 % input var:
 %	time_limit = 1000;				%요격 제한 시간, 단위:10ms
 %	hit_range = 5;					%명중판정 거리, 단위 : km, (미사일 기준 반경 5km이내로 설정함.)
-% 	speed_fighter = 0.3;  		%전투기 속력값, 단위 : km/10ms
-% 	speed_missile = 0.6;  		%미사일 속력값, 단위 : km/10ms
+% 	speed_fighter = 30;  			%전투기 속력값, 단위 : km/s
+% 	speed_missile = 60;  			%미사일 속력값, 단위 : km/s
 % 	init_fighter_pos = [0,0,100];	%전투기 초기위치 (x,y,z 좌표), 단위 : km
 % 	init_missile_pos = [500,0,0];	%미사일 초기위치 (x,y,z 좌표), 단위 : km
 % output var :
@@ -19,13 +19,17 @@
 % 입력부:
 time_limit = 1000;
 hit_range = 5;
-speed_fighter = 0.3;
-speed_missile = 0.6;
+speed_fighter = 30; 
+speed_missile = 60;
 init_fighter_pos = [0,0,100];
 init_missile_pos = [500,0,0];
 
 
 % 계산부:
+% 시간 증분 10ms에 맞게 단위 조정
+speed_fighter = speed_fighter/100;
+speed_missile = speed_missile/100;
+
 track_cell = getTrack(time_limit, hit_range, speed_fighter, speed_missile, init_fighter_pos, init_missile_pos);
 %1: 종료시간, 2: 전투기항적, 3: 미사일 항적, 4: 명중여부 가 셀로 반환됨.
 
